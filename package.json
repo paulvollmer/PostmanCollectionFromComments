@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/WrongEntertainment/PostmanCollectionFromComments",
   "dependencies": {
-    "PostmanCollectionProgrammatically": "git://github.com/WrongEntertainment/PostmanCollectionProgrammatically",
+    "PostmanCollectionProgrammatically": "WrongEntertainment/PostmanCollectionProgrammatically#v0.1.0",
     "execSync": "1.0.2",
     "jsdoc": "3.3.0-alpha9"
   },
