@@ -8,3 +8,7 @@ coverage
 
 # IDEs
 .idea
+
+test/directory-postman-collection.json
+
+test/singlefile-postman-collection.json
