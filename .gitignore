@@ -1,0 +1,10 @@
+# General
+*.DS_Store
+
+# Node.js & Grunt tasks
+node_modules
+npm-debug.log
+coverage
+
+# IDEs
+.idea
