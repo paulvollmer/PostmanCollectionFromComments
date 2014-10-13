@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
-      files: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'lib/**/*.js', 'bin/*', 'test/**/*.js']
     },
 
     mochaTest: {

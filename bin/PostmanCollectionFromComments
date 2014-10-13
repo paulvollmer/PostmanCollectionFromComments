@@ -1,0 +1,29 @@
+var cli = require('commander');
+var pkg = require('../package.json');
+var PostmanFromComments = require('../lib');
+
+cli.version(pkg.version)
+   .option('-f, --file [path]', 'input file')
+   .option('-d, --dir [path]', 'input directory')
+   .option('-o, --output [path]', 'output filepath')
+   .option('--name [n]', 'collection name')
+   .option('--description [n]', 'collection description')
+   .parse(process.argv);
+
+
+var postmanCollectionSettings = {
+  name: cli.name || 'postman-collection',
+  description: cli.description || 'some words about this collection'
+};
+
+var p = null;
+if(cli.file) {
+  p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings);
+}
+
+else if(cli.dir) {
+  p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings);
+}
+
+if(p) console.log('postman collection successfully written');
+else console.log('something went wrong, check your source file');

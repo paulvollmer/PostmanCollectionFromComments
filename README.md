@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments.svg)](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments)
 
-create postman collection from code comments
+create [postman](http://www.getpostman.com) collection from code comments
 
 
 ## Running Tests
