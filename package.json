@@ -26,7 +26,8 @@
   "homepage": "https://github.com/WrongEntertainment/PostmanCollectionFromComments",
   "dependencies": {
     "PostmanCollectionProgrammatically": "git://github.com/WrongEntertainment/PostmanCollectionProgrammatically",
-    "execSync": "1.0.2"
+    "execSync": "1.0.2",
+    "jsdoc": "3.3.0-alpha9"
   },
   "devDependencies": {
     "grunt": "0.4.5",
