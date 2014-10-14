@@ -3,14 +3,37 @@
 var cli = require('commander');
 var pkg = require('../package.json');
 var PostmanFromComments = require('../lib');
+var defaultTagTitles = require('../lib/defaultTagTitles');
 
 cli.version(pkg.version)
    .option('-f, --file [path]', 'input file')
    .option('-d, --dir [path]', 'input directory')
    .option('-o, --output [path]', 'output filepath')
    .option('--name [n]', 'collection name')
-   .option('--description [n]', 'collection description')
-   .parse(process.argv);
+   .option('--description [n]', 'collection description');
+
+cli.on('--help', function() {
+  console.log('  Description:\n');
+  console.log('    '+pkg.description);
+  console.log('\n  Default Tag Titles:\n');
+  console.log('    @'+defaultTagTitles.name);
+  console.log('    @'+defaultTagTitles.group);
+  console.log('    @'+defaultTagTitles.description);
+  console.log('    @'+defaultTagTitles.method);
+  console.log('    @'+defaultTagTitles.url);
+  console.log('    @'+defaultTagTitles.headers);
+  console.log('    @'+defaultTagTitles.pathVariables);
+  console.log('    @'+defaultTagTitles.preRequestScript);
+  console.log('    @'+defaultTagTitles.data);
+  console.log('    @'+defaultTagTitles.dataMode);
+  console.log('    @'+defaultTagTitles.tests);
+  console.log('    @'+defaultTagTitles.responses);
+  console.log('    @'+defaultTagTitles.synced);
+  console.log('    @'+defaultTagTitles.time);
+  console.log('');
+});
+
+cli.parse(process.argv);
 
 
 var postmanCollectionSettings = {
