@@ -27,6 +27,7 @@
   "homepage": "https://github.com/WrongEntertainment/PostmanCollectionFromComments",
   "dependencies": {
     "PostmanCollectionProgrammatically": "WrongEntertainment/PostmanCollectionProgrammatically#v0.1.0",
+    "cli-color": "0.3.2",
     "commander": "2.3.0",
     "execSync": "1.0.2",
     "jsdoc": "3.3.0-alpha9"
