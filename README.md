@@ -18,6 +18,12 @@ now you can run the cli by typing:
     PostmanCollectionFromComments --help
 
 
+## Usage
+
+you can find a simple code sample at the [test/fixtures](test/fixtures/sample.js) directory.  
+The default tag titles can be found [here](lib/defaultTagTitles.js)
+
+
 ## Running Tests
 
 run the tests:
