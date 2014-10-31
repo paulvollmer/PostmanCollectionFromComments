@@ -1,54 +1,123 @@
 #!/usr/bin/env node
 
 var cli = require('commander');
+var clc = require('cli-color');
 var pkg = require('../package.json');
 var PostmanFromComments = require('../lib');
 var defaultTagTitles = require('../lib/defaultTagTitles');
 
 cli.version(pkg.version)
-   .option('-f, --file [path]', 'input file')
-   .option('-d, --dir [path]', 'input directory')
-   .option('-o, --output [path]', 'output filepath')
-   .option('--name [n]', 'collection name')
-   .option('--description [n]', 'collection description');
+   .option('-f, --file [path]',      'input file')
+   .option('-d, --dir [path]',       'input directory')
+   .option('-o, --output [path]',    'output filepath')
+   .option('--name [n]',             'set the collection name')
+   .option('--desc [d]',             'set the collection description')
+   .option('--tag-name [t]',         'set the name tag',             defaultTagTitles.name)
+   .option('--tag-group [t]',        'set the group tag',            defaultTagTitles.group)
+   .option('--tag-desc [t]',         'set the description tag',      defaultTagTitles.description)
+   .option('--tag-method [t]',       'set the method tag',           defaultTagTitles.method)
+   .option('--tag-url [t]',          'set the url tag',              defaultTagTitles.url)
+   .option('--tag-headers [t]',      'set the headers tag',          defaultTagTitles.headers)
+   .option('--tag-pathvars [t]',     'set the pathVariables tag',    defaultTagTitles.pathVariables)
+   .option('--tag-prereqscript [t]', 'set the preRequestScript tag', defaultTagTitles.preRequestScript)
+   .option('--tag-data [t]',         'set the data tag',             defaultTagTitles.data)
+   .option('--tag-datamode [t]',     'set the dataMode tag',         defaultTagTitles.dataMode)
+   .option('--tag-tests [t]',        'set the tests tag',            defaultTagTitles.tests)
+   .option('--tag-res [t]',          'set the responses tag',        defaultTagTitles.responses)
+   .option('--tag-synced [t]',       'set the synced tag',           defaultTagTitles.synced)
+   .option('--tag-time [t]',         'set the time tag',             defaultTagTitles.time)
 
 cli.on('--help', function() {
   console.log('  Description:\n');
   console.log('    '+pkg.description);
-  console.log('\n  Default Tag Titles:\n');
-  console.log('    @'+defaultTagTitles.name);
-  console.log('    @'+defaultTagTitles.group);
-  console.log('    @'+defaultTagTitles.description);
-  console.log('    @'+defaultTagTitles.method);
-  console.log('    @'+defaultTagTitles.url);
-  console.log('    @'+defaultTagTitles.headers);
-  console.log('    @'+defaultTagTitles.pathVariables);
-  console.log('    @'+defaultTagTitles.preRequestScript);
-  console.log('    @'+defaultTagTitles.data);
-  console.log('    @'+defaultTagTitles.dataMode);
-  console.log('    @'+defaultTagTitles.tests);
-  console.log('    @'+defaultTagTitles.responses);
-  console.log('    @'+defaultTagTitles.synced);
-  console.log('    @'+defaultTagTitles.time);
+  console.log('\n    to set custom tag titles, check the `--tag-x` flags');
+  console.log('    the default tag titles are:');
+  console.log('      @'+defaultTagTitles.name);
+  console.log('      @'+defaultTagTitles.group);
+  console.log('      @'+defaultTagTitles.description);
+  console.log('      @'+defaultTagTitles.method);
+  console.log('      @'+defaultTagTitles.url);
+  console.log('      @'+defaultTagTitles.headers);
+  console.log('      @'+defaultTagTitles.pathVariables);
+  console.log('      @'+defaultTagTitles.preRequestScript);
+  console.log('      @'+defaultTagTitles.data);
+  console.log('      @'+defaultTagTitles.dataMode);
+  console.log('      @'+defaultTagTitles.tests);
+  console.log('      @'+defaultTagTitles.responses);
+  console.log('      @'+defaultTagTitles.synced);
+  console.log('      @'+defaultTagTitles.time);
   console.log('');
 });
 
 cli.parse(process.argv);
 
-
-var postmanCollectionSettings = {
-  name: cli.name || 'postman-collection',
-  description: cli.description || 'some words about this collection'
+function failedLog(msg) {
+  console.log(clc.red('\n  F A I L E D --> '+msg+'\n'));
 };
 
-var p = null;
-if(cli.file) {
-  p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings);
-}
+if(cli.file || cli.dir) {
+  if(cli.output) {
+    var postmanCollectionSettings = {
+      name: cli.name || 'postman-collection',
+      description: cli.desc || 'some words about this collection'
+    };
+    console.log(clc.cyan('\nC O L L E C T I O N - S E T T I N G S\n'));
+    console.log('collection name:          '+postmanCollectionSettings.name);
+    console.log('collection description:   '+postmanCollectionSettings.description);
 
-else if(cli.dir) {
-  p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings);
-}
+    var tagSettings = {
+      name: cli.tagName,
+      group: cli.tagGroup,
+      description: cli.tagDesc,
+      method: cli.tagMethod,
+      url: cli.tagUrl,
+      headers: cli.tagHeaders,
+      pathVariables: cli.tagPathvars,
+      preRequestScript: cli.tagPrereqscript,
+      data: cli.tagData,
+      dataMode: cli.tagDatamode,
+      tests: cli.tagTests,
+      synced: cli.tagSynced,
+      time: cli.tagTime
+    };
+    console.log(clc.cyan('\nT A G - S E T T I N G S\n'));
+    console.log('tag name:                 '+tagSettings.name);
+    console.log('tag group:                '+tagSettings.group);
+    console.log('tag description:          '+tagSettings.description);
+    console.log('tag method:               '+tagSettings.method);
+    console.log('tag url:                  '+tagSettings.url);
+    console.log('tag headers:              '+tagSettings.headers);
+    console.log('tag pathVariables:        '+tagSettings.pathVariables);
+    console.log('tag preRequestScript:     '+tagSettings.preRequestScript);
+    console.log('tag data:                 '+tagSettings.data);
+    console.log('tag dataMode:             '+tagSettings.dataMode);
+    console.log('tag tests:                '+tagSettings.tests);
+    console.log('tag synced:               '+tagSettings.synced);
+    console.log('tag time:                 '+tagSettings.time);
 
-if(p) console.log('postman collection successfully written');
-else console.log('something went wrong, check your source file');
+    var p = null;
+    function startProcessingLog(input) {
+      console.log(clc.cyan('\nI N / O U T - S O U R C E\n'));
+      console.log('input:                    '+input);
+      console.log('output:                   '+cli.output);
+      console.log(clc.cyan('\nP R O C E S S I N G...\n'));
+    };
+    if(cli.file) {
+      startProcessingLog(cli.file);
+      p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings, tagSettings);
+    }
+    else if(cli.dir) {
+      startProcessingLog(cli.dir);
+      p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings, tagSettings);
+    }
+
+    if(p) console.log(clc.green('\npostman collection successfully written\n'));
+    else failedLog('something went wrong, check your source file\n');
+  }
+  else {
+    failedLog('missing output. check --help');
+  }
+}
+else {
+  failedLog('missing input. check --help');
+}
