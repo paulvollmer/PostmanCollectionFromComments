@@ -25,7 +25,7 @@ cli.version(pkg.version)
    .option('--tag-tests [t]',        'set the tests tag',            defaultTagTitles.tests)
    .option('--tag-res [t]',          'set the responses tag',        defaultTagTitles.responses)
    .option('--tag-synced [t]',       'set the synced tag',           defaultTagTitles.synced)
-   .option('--tag-time [t]',         'set the time tag',             defaultTagTitles.time)
+   .option('--tag-time [t]',         'set the time tag',             defaultTagTitles.time);
 
 cli.on('--help', function() {
   console.log('  Description:\n');
@@ -53,7 +53,14 @@ cli.parse(process.argv);
 
 function failedLog(msg) {
   console.log(clc.red('\n  F A I L E D --> '+msg+'\n'));
-};
+}
+
+function startProcessingLog(input) {
+  console.log(clc.cyan('\nI N / O U T - S O U R C E\n'));
+  console.log('input:                    '+input);
+  console.log('output:                   '+cli.output);
+  console.log(clc.cyan('\nP R O C E S S I N G...\n'));
+}
 
 if(cli.file || cli.dir) {
   if(cli.output) {
@@ -96,12 +103,6 @@ if(cli.file || cli.dir) {
     console.log('tag time:                 '+tagSettings.time);
 
     var p = null;
-    function startProcessingLog(input) {
-      console.log(clc.cyan('\nI N / O U T - S O U R C E\n'));
-      console.log('input:                    '+input);
-      console.log('output:                   '+cli.output);
-      console.log(clc.cyan('\nP R O C E S S I N G...\n'));
-    };
     if(cli.file) {
       startProcessingLog(cli.file);
       p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings, tagSettings);
