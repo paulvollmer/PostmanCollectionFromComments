@@ -1,6 +1,7 @@
 # PostmanCollectionFromComments
 
 [![Build Status](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments.svg)](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments)
+[![Dependency Status](https://gemnasium.com/WrongEntertainment/PostmanCollectionFromComments.svg)](https://gemnasium.com/WrongEntertainment/PostmanCollectionFromComments)
 
 create [postman](http://www.getpostman.com) collection from code comments
 
