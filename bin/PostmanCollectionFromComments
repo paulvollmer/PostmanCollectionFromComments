@@ -7,6 +7,7 @@ var PostmanFromComments = require('../lib');
 var defaultTagTitles = require('../lib/defaultTagTitles');
 
 cli.version(pkg.version)
+   .option('--verbose',              'verbose output')
    .option('-f, --file [path]',      'input file')
    .option('-d, --dir [path]',       'input directory')
    .option('-o, --output [path]',    'output filepath')
@@ -105,11 +106,11 @@ if(cli.file || cli.dir) {
     var p = null;
     if(cli.file) {
       startProcessingLog(cli.file);
-      p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings, tagSettings);
+      p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings, tagSettings, cli.verbose);
     }
     else if(cli.dir) {
       startProcessingLog(cli.dir);
-      p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings, tagSettings);
+      p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings, tagSettings, cli.verbose);
     }
 
     if(p) console.log(clc.green('\npostman collection successfully written\n'));
