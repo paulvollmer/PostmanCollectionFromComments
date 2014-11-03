@@ -1,18 +1,18 @@
 # PostmanCollectionFromComments
 
-[![Build Status](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments.svg)](https://travis-ci.org/WrongEntertainment/PostmanCollectionFromComments)
-[![Dependency Status](https://gemnasium.com/WrongEntertainment/PostmanCollectionFromComments.svg)](https://gemnasium.com/WrongEntertainment/PostmanCollectionFromComments)
+[![Build Status](https://travis-ci.org/paulvollmer/PostmanCollectionFromComments.svg)](https://travis-ci.org/paulvollmer/PostmanCollectionFromComments)
+[![Dependency Status](https://gemnasium.com/paulvollmer/PostmanCollectionFromComments.svg)](https://gemnasium.com/paulvollmer/PostmanCollectionFromComments)
 
 create [postman](http://www.getpostman.com) collection from code comments
 
 
 ## Installation
 
-    npm install WrongEntertainment/PostmanCollectionFromComments
+    npm install paulvollmer/PostmanCollectionFromComments
 
 or install global
 
-    npm install -g WrongEntertainment/PostmanCollectionFromComments
+    npm install -g paulvollmer/PostmanCollectionFromComments
 
 now you can run the cli by typing:
 

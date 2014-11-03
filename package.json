@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/WrongEntertainment/PostmanCollectionFromComments.git"
+    "url": "https://github.com/paulvollmer/PostmanCollectionFromComments.git"
   },
   "bugs": {
-    "url": "https://github.com/WrongEntertainment/PostmanCollectionFromComments/issues"
+    "url": "https://github.com/paulvollmer/PostmanCollectionFromComments/issues"
   },
-  "homepage": "https://github.com/WrongEntertainment/PostmanCollectionFromComments",
+  "homepage": "https://github.com/paulvollmer/PostmanCollectionFromComments",
   "dependencies": {
-    "PostmanCollectionProgrammatically": "WrongEntertainment/PostmanCollectionProgrammatically#v0.1.0",
+    "PostmanCollectionProgrammatically": "paulvollmer/PostmanCollectionProgrammatically#v0.1.0",
     "cli-color": "0.3.2",
     "commander": "2.3.0",
     "execSync": "1.0.2",
