@@ -11,7 +11,7 @@ describe('runJsdoc', function() {
     });
 
     it('should return true if jsdoc successful exit', function () {
-      var result = runJsdoc.exec('./test/fixtures/sample.js');
+      var result = runJsdoc.exec('./test/fixtures/simple.js');
       assert.ok(typeof result === 'object');
     });
   });

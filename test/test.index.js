@@ -88,12 +88,12 @@ describe('index', function() {
 
   describe('#singleFile()', function () {
     it('should return false if file cannot saved', function () {
-      var p = PostmanFromComments.singleFile('./test/fixtures/sample.js', './wrong/path.json', postmanCollectionSettings);
+      var p = PostmanFromComments.singleFile('./test/fixtures/simple.js', './wrong/path.json', postmanCollectionSettings);
       assert.equal(p, false);
     });
 
     it('should return true if successful saved file', function () {
-      var p = PostmanFromComments.singleFile('./test/fixtures/sample.js', './test/singlefile-postman-collection.json', postmanCollectionSettings);
+      var p = PostmanFromComments.singleFile('./test/fixtures/simple.js', './test/singlefile-postman-collection.json', postmanCollectionSettings);
       assert.equal(p, true);
     });
   });
