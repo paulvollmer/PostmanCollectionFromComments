@@ -60,7 +60,7 @@ function startProcessingLog(input) {
   console.log(clc.cyan('\nI N / O U T - S O U R C E\n'));
   console.log('input:                    '+input);
   console.log('output:                   '+cli.output);
-  console.log(clc.cyan('\nP R O C E S S I N G...\n'));
+  console.log(clc.cyan('\nP R O C E S S I N G . . .\n'));
 }
 
 if(cli.file || cli.dir) {
@@ -103,14 +103,15 @@ if(cli.file || cli.dir) {
     console.log('tag synced:               '+tagSettings.synced);
     console.log('tag time:                 '+tagSettings.time);
 
+    var postman = new PostmanFromComments(postmanCollectionSettings, tagSettings, cli.verbose);
     var p = null;
     if(cli.file) {
       startProcessingLog(cli.file);
-      p = PostmanFromComments.singleFile(cli.file, cli.output, postmanCollectionSettings, tagSettings, cli.verbose);
+      p = postman.singleFile(cli.file, cli.output);
     }
     else if(cli.dir) {
       startProcessingLog(cli.dir);
-      p = PostmanFromComments.directory(cli.dir, cli.output, postmanCollectionSettings, tagSettings, cli.verbose);
+      p = postman.directory(cli.dir, cli.output);
     }
 
     if(p) console.log(clc.green('\npostman collection successfully written\n'));
