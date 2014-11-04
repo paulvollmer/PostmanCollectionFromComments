@@ -21,7 +21,7 @@ now you can run the cli by typing:
 
 ## Usage
 
-you can find a simple code sample at the [test/fixtures](test/fixtures/sample.js) directory.  
+you can find a simple code sample at the [test/fixtures](test/fixtures/simple.js) directory.  
 The default tag titles can be found [here](lib/defaultTagTitles.js)
 
 
