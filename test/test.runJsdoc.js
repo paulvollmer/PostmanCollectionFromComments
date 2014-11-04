@@ -24,7 +24,7 @@ describe('runJsdoc', function() {
 
      it('should return the jsdoc object', function() {
        var result = runJsdoc.execAtDir('./test/fixtures');
-       assert.equal(result.length, 1);
+       assert.equal(result.length, 2);
      });
   });
 
